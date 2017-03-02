@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.sakaiproject.contentreview.model">
+
+    <class name="UnplagItem"  table="unplag_item">
+        <id name="contentId" column="content_id" type="string" length="255"/>
+        <property name="siteId" column="site_id" type="string" length="255" index="unplag_site_idx"/>
+        <property name="assignmentRef" column="assignment_ref" type="string" length="255" index="unplag_assignment_idx"/>
+        <property name="userId" column="user_id" type="string" length="255" index="unplag_user_idx"/>
+        <property name="link" column="report_link" type="string" length="255" not-null="false"/>
+        <property name="editLink" column="report_edit_link" type="string" length="255" not-null="false"/>
+        <property name="score" column="score" type="int" not-null="false"/>
+        <property name="error" column="error" type="string" length="255" not-null="false"/>
+    </class>
+
+</hibernate-mapping>

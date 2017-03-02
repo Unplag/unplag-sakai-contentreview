@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+        "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+
+    <bean id="org.sakaiproject.contentreview.service.ContentReviewSiteAdvisor"
+          class="org.sakaiproject.contentreview.impl.DefaultSiteAdvisor"/>
+
+    <bean
+            id="org.sakaiproject.contentreview.service.ContentReviewServiceUnplag"
+            class="org.sakaiproject.contentreview.impl.ContentReviewServiceUnplagImpl"
+
+            init-method="init"
+            destroy-method="destroy">
+
+        <property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService"/>
+        <property name="unplagItemDao" ref="unplagItemDao"/>
+    </bean>
+
+    <bean id="unplagItemDao" class="org.sakaiproject.contentreview.dao.UnplagItemDaoImpl">
+        <property name="sessionFactory" ref="org.sakaiproject.springframework.orm.hibernate.GlobalSessionFactory"/>
+
+    </bean>
+
+    <bean id="org.sakaiproject.contentreview.hibernate.AdditionalHibernateMappings"
+          class="org.sakaiproject.springframework.orm.hibernate.impl.AdditionalHibernateMappingsImpl">
+        <property name="mappingResources">
+            <list>
+                <value>org/sakaiproject/contentreview/hbm/UnplagItem.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
