@@ -15,6 +15,7 @@
             destroy-method="destroy">
 
         <property name="serverConfigurationService" ref="org.sakaiproject.component.api.ServerConfigurationService"/>
+        <property name="preferencesService" ref="org.sakaiproject.user.api.PreferencesService"/>
         <property name="unplagItemDao" ref="unplagItemDao"/>
     </bean>
 

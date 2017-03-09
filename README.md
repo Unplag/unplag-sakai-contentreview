@@ -31,13 +31,16 @@ Open */tomcat/components/sakai-content-review-pack-federated/WEB-INF/components.
 # Unplag settings
 unplag.key=<your-key>
 unplag.secret=<your-secret>
-unplag.pool.size=8
-# 0 - MY_LIBRARY
-# 1 - WEB
-# 2 - EXTERNAL_DATABASE
-# 4 - WEB_AND_MY_LIBRARY
-unplag.check.type=1
+unplag.checkType=1
 ```  
+
+Possible check types (depends on your Unplag account plan):  
+ - **0** = My Library
+ - **1** = Internet
+ - **2** = External DB
+ - **4** = Internet + Library
+
+
 
 #### 4. Enable content review for assignments in *tomcat/sakai/sakai.properties*
 ```ini
@@ -47,4 +50,13 @@ assignment.useContentReview=true
 If you have  more than one enabled provider, add to Site properties *(admin account -> sites -> Add / Edit Properties)*:
 ```
 contentreview.provider:Unplag
+```
+
+## OPTIONAL PROPERTIES
+```ini
+unplag.poolSize=8
+unplag.maxFileSize=20971520
+unplag.allowAnyFileType=false
+unplag.exclude.citations=true
+unplag.exclude.references=true
 ```
